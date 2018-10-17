@@ -17,7 +17,8 @@ jacocoTestCoverageVerification {
                 counter = "INSTRUCTION"
                 excludes = [
                         '*.InSufficientParameterException',
-                        '*.InSufficientParameterException',
+                        '*.RpnCalculator',
+                        '*.MathOperation'
 
                 ]
                 value = "COVEREDRATIO"
