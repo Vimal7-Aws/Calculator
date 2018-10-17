@@ -1,0 +1,59 @@
+apply plugin: "jacoco"
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled true
+        html.destination new File("${buildDir}/reports/jacoco/test/html")
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+            limit {
+                counter = "INSTRUCTION"
+                excludes = [
+                        '*.InSufficientParameterException',
+                        '*.InSufficientParameterException',
+
+                ]
+                value = "COVEREDRATIO"
+                minimum = 0.9
+            }
+            limit {
+                counter = "LINE"
+                value = "COVEREDRATIO"
+                minimum = 0.9
+            }
+            limit {
+                counter = "BRANCH"
+                value = "COVEREDRATIO"
+                minimum = 0.9
+            }
+            limit {
+                counter = "COMPLEXITY"
+                value = "COVEREDRATIO"
+                minimum = 0.9
+            }
+            limit {
+                counter = "METHOD"
+                value = "COVEREDRATIO"
+                minimum = 0.9
+            }
+            limit {
+                counter = "CLASS"
+                value = "COVEREDRATIO"
+                minimum = 0.9
+            }
+        }
+    }
+}
+
+jacocoTestCoverageVerification.dependsOn jacocoTestReport
+
+check.dependsOn jacocoTestCoverageVerification
+
+test.finalizedBy jacocoTestReport
