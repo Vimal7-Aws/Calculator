@@ -1,7 +1,9 @@
 package anz.com.au.manager;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 import anz.com.au.exception.InSufficientParameterException;
@@ -55,8 +57,8 @@ public class RpnManager {
     private void validateSufficentParameters(String inValue) {
         if (numberStack.size() == 1 &&
                 !(inValue.equalsIgnoreCase(MathOperation.CLEAR.name()) ||
-                        inValue.equalsIgnoreCase(MathOperation.SQRT.name())
-                        || inValue.equalsIgnoreCase("undo"))) {
+                        inValue.equalsIgnoreCase(MathOperation.SQRT.name()) ||
+                        inValue.equalsIgnoreCase("undo"))) {
             throw new InSufficientParameterException("Insufficient Parameters");
         }
     }

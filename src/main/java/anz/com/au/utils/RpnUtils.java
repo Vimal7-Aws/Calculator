@@ -10,7 +10,6 @@ import java.util.Stack;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static java.math.RoundingMode.HALF_UP;
 import static java.util.stream.Collectors.joining;
 import static org.apache.commons.lang3.StringUtils.SPACE;
 import static org.apache.commons.lang3.StringUtils.split;
@@ -32,7 +31,7 @@ public class RpnUtils {
 
 
 
-    public static final Function<BigDecimal, String> scaledObject_10decimal =
+    private static Function<BigDecimal, String> displayScale =
             decimal -> decimal.setScale(10, RoundingMode.DOWN).stripTrailingZeros().toPlainString();
 
 
@@ -40,7 +39,7 @@ public class RpnUtils {
     public static String displayState(Stack<BigDecimal> numberStack) {
         return numberStack
                 .stream()
-                .map(scaledObject_10decimal)
+                .map(displayScale)
                 .collect(joining(SPACE));
     }
 
