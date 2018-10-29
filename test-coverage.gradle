@@ -3,8 +3,6 @@ apply plugin: "jacoco"
 
 jacocoTestReport {
     reports {
-        xml.enabled true
-        csv.enabled false
         html.enabled true
         html.destination new File("${buildDir}/reports/jacoco/test/html")
     }

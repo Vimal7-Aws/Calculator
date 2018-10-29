@@ -1,25 +1,26 @@
 package anz.com.au.strategy;
 
+import anz.com.au.operations.OperationUnit;
+
 import java.math.BigDecimal;
+import java.util.Stack;
 
 public class OperationVO {
-    private BigDecimal value1;
-    private BigDecimal value2;
+    private Stack<BigDecimal> numberStack;
 
-    public BigDecimal getValue1() {
-        return value1;
+    public Stack<BigDecimal> getNumberStack() {
+        return numberStack;
     }
 
-
-    public BigDecimal getValue2() {
-        return value2;
+    public Stack<OperationUnit> getOperationList() {
+        return operationList;
     }
 
+    private Stack<OperationUnit> operationList;
 
 
-    public OperationVO(BigDecimal inValue1, BigDecimal inValue2){
-        this.value1 = inValue1;
-        this.value2 = inValue2;
+    public OperationVO(Stack<BigDecimal> numberStack, Stack<OperationUnit> operationList) {
+        this.numberStack = numberStack;
+        this.operationList = operationList;
     }
-
 }

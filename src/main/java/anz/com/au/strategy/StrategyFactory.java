@@ -26,6 +26,10 @@ public final class StrategyFactory {
                 new SubtractStrategy());
         strategies.put(MathOperation.SQRT.name(),
                 new SqrtStrategy());
+        strategies.put(MathOperation.UNDO.name(),
+                new UndoStrategy());
+        strategies.put(MathOperation.CLEAR.name(),
+                new ClearStrategy());
     }
 
 

@@ -11,6 +11,7 @@ public enum MathOperation {
     SUBTRACT("-"),
     DIVIDE("/"),
     CLEAR("clear"),
+    UNDO("undo"),
     SQRT("sqrt");
 
 
