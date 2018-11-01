@@ -8,7 +8,7 @@ import anz.com.au.operations.MathOperation;
 
 public final class StrategyFactory {
 
-    private static Map<String, OperationStrategy> strategies =
+    private static Map<String, OperationBaseStrategy> strategies =
             new HashMap<>();
 
     private StrategyFactory() {
@@ -33,7 +33,7 @@ public final class StrategyFactory {
     }
 
 
-    public static OperationStrategy getInstance(String type) {
+    public static OperationBaseStrategy getInstance(String type) {
         return strategies.get(type);
     }
 }

@@ -4,12 +4,13 @@ import anz.com.au.manager.RpnOperationsBase;
 
 import java.math.BigDecimal;
 
-public class SubtractStrategy implements OperationStrategy {
-    public BigDecimal execute(OperationVO operationVO) {
+public class SubtractStrategy implements OperationBaseStrategy {
+    public void execute(OperationVO operationVO) {
         RpnOperationsBase.arrange(operationVO, false);
 
         BigDecimal value1 = operationVO.getNumberStack().pop();
         BigDecimal value2 = operationVO.getNumberStack().pop();
-        return value2.subtract(value1);
+        BigDecimal value = value2.subtract(value1);
+        operationVO.getNumberStack().push(value);
     }
 }

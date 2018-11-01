@@ -3,7 +3,7 @@ package anz.com.au.manager;
 import anz.com.au.exception.InSufficientParameterException;
 import anz.com.au.operations.MathOperation;
 import anz.com.au.operations.OperationUnit;
-import anz.com.au.strategy.OperationStrategy;
+import anz.com.au.strategy.OperationBaseStrategy;
 import anz.com.au.strategy.OperationVO;
 import anz.com.au.strategy.StrategyFactory;
 import anz.com.au.utils.RpnUtils;
@@ -56,14 +56,11 @@ public class RpnManager extends RpnOperationsBase {
 
     private void doOperation(String inValue) {
 
-        OperationStrategy strategy = StrategyFactory.getInstance(MathOperation.getOperation(inValue));
+        OperationBaseStrategy strategy = StrategyFactory.getInstance(MathOperation.getOperation(inValue));
         OperationVO operationVO = new OperationVO(numberStack, operationList);
-        BigDecimal execute = strategy.execute(operationVO);
-        if (Objects.nonNull(execute)) {
-            numberStack.push(execute);
-        }
+        strategy.execute(operationVO);
 
-        logger.info("value after execution {} ", execute);
+        logger.info("value after execution {} ", operationVO.getNumberStack());
     }
 
 
